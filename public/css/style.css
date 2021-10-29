@@ -1,0 +1,8 @@
+i.cWidth {
+    text-align: center!important;
+    width: 1em!important;
+}
+
+a:nth-child(2) > i {
+    width: .95em!important;
+}
