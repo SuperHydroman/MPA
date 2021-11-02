@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/* General Routing */
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
@@ -27,10 +28,13 @@ Route::get('/profile', function () {
     return view('profile');
 })->middleware(['auth'])->name('profile');
 
-Route::get('/songs', [SongController::class, 'show'])->middleware(['auth'])->name('songs');
+/* Song Routing */
+Route::get('/songs', [SongController::class, 'show'])->middleware(['auth'])->name('songs.index');
+Route::get('/songs/add/{id}', [SongController::class, 'add'])->middleware('auth')->name('songs.add');
 
+/* Playlist Routing */
 Route::get('/playlists', function () {
     return view('playlists');
-})->middleware(['auth'])->name('playlists');
+})->middleware(['auth'])->name('playlists.index');
 
 require __DIR__ . '/auth.php';

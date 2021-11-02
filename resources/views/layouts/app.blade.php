@@ -34,5 +34,6 @@
                 {{ $slot }}
             </main>
         </div>
+        <div class="footer">{{dd(session()->all())}}</div>
     </body>
 </html>

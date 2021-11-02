@@ -11,8 +11,8 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <h1 class="font-bold text-2xl pb-2">Profile of {{ Auth::user()->name }}</h1>
                     <div class="divider mb-5 pb-5 border-gray-300 border-solid border-t"></div>
-                    <p>Favourite Genre</p>
-                    <p>Playlists</p>
+{{--                    <p>Favourite Genre</p>--}}
+                    <p>->Session Playlist</p>
                 </div>
             </div>
         </div>
