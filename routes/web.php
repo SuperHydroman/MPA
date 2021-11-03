@@ -34,7 +34,7 @@ Route::get('/songs/add/{id}', [SongController::class, 'add'])->middleware('auth'
 
 /* Playlist Routing */
 Route::get('/playlists', function () {
-    return view('playlists');
+    return view('playlists/index');
 })->middleware(['auth'])->name('playlists.index');
 
 require __DIR__ . '/auth.php';

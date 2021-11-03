@@ -18,10 +18,10 @@ class CreateSongsTable extends Migration
             $table->string('name');
             $table->string('artist');
 
-            $table->unsignedBigInteger('genre_id');                                         // Foreign Key
-            $table->foreign('genre_id')->references('id')->on('genres');      // Foreign Key
+            $table->unsignedBigInteger('genre_id');
+            $table->foreign('genre_id')->references('id')->on('genres');
 
-            $table->string("duration");
+            $table->time("duration");
             $table->timestamps();
         });
     }

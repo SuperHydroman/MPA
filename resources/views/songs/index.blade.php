@@ -24,7 +24,7 @@
 
                         <div class="flex items-center justify-center row-start-1 col-start-7 col-end-9">
                             <p class="icons">
-                                <i class="far fa-play-circle"></i> {{ $song->duration }}
+                                <i class="far fa-play-circle"></i> {{ date("i:s", strtotime($song->duration)) }}
                             </p>
                         </div>
 
