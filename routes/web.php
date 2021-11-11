@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\PlaylistController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SongController;
-use App\Models\Song;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,17 +25,12 @@ Route::get('/home', function () {
     return view('home');
 })->middleware(['auth'])->name('home');
 
-Route::get('/profile', function () {
-    return view('profile');
-})->middleware(['auth'])->name('profile');
-
+Route::get('/profile', [ProfileController::class, 'show'])->middleware(['auth'])->name('profile.index');
 /* Song Routing */
 Route::get('/songs', [SongController::class, 'show'])->middleware(['auth'])->name('songs.index');
 Route::get('/songs/add/{id}', [SongController::class, 'add'])->middleware('auth')->name('songs.add');
 
 /* Playlist Routing */
-Route::get('/playlists', function () {
-    return view('playlists/index');
-})->middleware(['auth'])->name('playlists.index');
+Route::get('/playlists', [PlaylistController::class, 'show'])->middleware(['auth'])->name('playlists.index');
 
 require __DIR__ . '/auth.php';

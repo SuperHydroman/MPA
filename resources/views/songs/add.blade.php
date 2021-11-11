@@ -8,10 +8,9 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <form method="post" action="{{ route('songs.index') }}">
-                    <input type="text" name="test" id="1">
-                    <button>TEST</button>
-                </form>
+                <div class="p-6 bg-white border-b border-gray-200">
+                    Song added!
+                </div>
             </div>
         </div>
     </div>

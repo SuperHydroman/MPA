@@ -3,10 +3,3 @@ i.cWidth {
     width: 1em!important;
 }
 
-a:nth-child(2) > i {
-    width: .95em!important;
-}
-
-#songsParent:hover #test{
-    border-color: rgb(194, 196, 200);
-}

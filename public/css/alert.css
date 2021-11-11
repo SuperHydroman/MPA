@@ -1,0 +1,26 @@
+
+.alert-callout-border {
+    width: 100%;
+    padding: 1.3rem;
+    border-left-width: 0.3125rem;
+    border-left-color: #cacaca;
+}
+
+.alert-callout-border strong {
+    color: #0a0a0a;
+}
+
+.alert-callout-border .close-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.alert-callout-border.success {
+    border-left-color: #3adb76;
+}
+
+.alert-callout-border.success strong {
+    color: #3adb76;
+}
+

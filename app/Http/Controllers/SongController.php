@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PlaylistSession;
 use App\Models\Song;
-use Illuminate\Http\Request;
 
 class SongController extends Controller
 {
@@ -14,8 +14,12 @@ class SongController extends Controller
     }
 
     public function add($id) {
-        return view('songs.add', [
-            'test' =>  Song::find($id)
-        ]);
+        $p = new PlaylistSession();
+        $p->addToSession($id);
+
+        return redirect()->route('songs.index');
+//        return view('songs.add', [
+//            'song' =>  Song::find($id)
+//        ]);
     }
 }

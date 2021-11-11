@@ -44,7 +44,7 @@
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
-                            <x-dropdown-link :href="route('profile')">
+                            <x-dropdown-link :href="route('profile.index')">
                                 {{ __('Profile') }}
                             </x-dropdown-link>
 
