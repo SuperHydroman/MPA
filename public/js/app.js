@@ -21267,16 +21267,6 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 
 /***/ }),
 
-/***/ "./resources/css/alert.scss":
-/*!**********************************!*\
-  !*** ./resources/css/alert.scss ***!
-  \**********************************/
-/***/ (() => {
-
-throw new Error("Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nSassError: Undefined variable.\n  ╷\n9 │     border-left-color: $medium-gray;\n  │                        ^^^^^^^^^^^^\n  ╵\n  resources\\css\\alert.scss 9:24  root stylesheet\n    at processResult (C:\\Users\\gvdhe\\Desktop\\School\\DVC Gorinchem\\MPA\\node_modules\\webpack\\lib\\NormalModule.js:748:19)\n    at C:\\Users\\gvdhe\\Desktop\\School\\DVC Gorinchem\\MPA\\node_modules\\webpack\\lib\\NormalModule.js:850:5\n    at C:\\Users\\gvdhe\\Desktop\\School\\DVC Gorinchem\\MPA\\node_modules\\loader-runner\\lib\\LoaderRunner.js:399:11\n    at C:\\Users\\gvdhe\\Desktop\\School\\DVC Gorinchem\\MPA\\node_modules\\loader-runner\\lib\\LoaderRunner.js:251:18\n    at context.callback (C:\\Users\\gvdhe\\Desktop\\School\\DVC Gorinchem\\MPA\\node_modules\\loader-runner\\lib\\LoaderRunner.js:124:13)\n    at C:\\Users\\gvdhe\\Desktop\\School\\DVC Gorinchem\\MPA\\node_modules\\sass-loader\\dist\\index.js:54:7\n    at Function.call$2 (C:\\Users\\gvdhe\\Desktop\\School\\DVC Gorinchem\\MPA\\node_modules\\sass\\sass.dart.js:96399:16)\n    at render_closure1.call$2 (C:\\Users\\gvdhe\\Desktop\\School\\DVC Gorinchem\\MPA\\node_modules\\sass\\sass.dart.js:82305:12)\n    at _RootZone.runBinary$3$3 (C:\\Users\\gvdhe\\Desktop\\School\\DVC Gorinchem\\MPA\\node_modules\\sass\\sass.dart.js:28284:18)\n    at _FutureListener.handleError$1 (C:\\Users\\gvdhe\\Desktop\\School\\DVC Gorinchem\\MPA\\node_modules\\sass\\sass.dart.js:26806:21)");
-
-/***/ }),
-
 /***/ "./resources/css/app.css":
 /*!*******************************!*\
   !*** ./resources/css/app.css ***!
@@ -21685,7 +21675,6 @@ module.exports = JSON.parse('{"_from":"axios@^0.21","_id":"axios@0.21.4","_inBun
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
 /******/ 	__webpack_require__.O(undefined, ["css/alert","css/style","css/app"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	__webpack_require__.O(undefined, ["css/alert","css/style","css/app"], () => (__webpack_require__("./resources/css/alert.scss")))
 /******/ 	__webpack_require__.O(undefined, ["css/alert","css/style","css/app"], () => (__webpack_require__("./resources/css/app.css")))
 /******/ 	__webpack_require__.O(undefined, ["css/alert","css/style","css/app"], () => (__webpack_require__("./resources/css/style.css")))
 /******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/alert","css/style","css/app"], () => (__webpack_require__("./resources/css/alert.css")))

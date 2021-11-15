@@ -10,36 +10,42 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <h1 class="font-bold text-2xl pb-2">Profile of {{ Auth::user()->name }}</h1>
-                    <div class="divider mb-5 pb-5 border-gray-300 border-solid border-t"></div>
+                    <div class="divider mb-3 pb-3 border-gray-300 border-solid border-t"></div>
                         <h1 class="font-bold text-lg pb-1">Playlist</h1>
-                        @foreach($songs as $song)
-                            <div id="songsParent" class="transition ease-in-out duration-300 hover:bg-gray-200 text-2xl grid grid-rows-1 grid-cols-12 p-6 bg-white border-b border-gray-200">
-                                <div id="test" class="row-start-1 col-start-1 col-end-4 border-r-2 border-gray-200">
-                                    <h2 class="font-extrabold">{{ $song->name }}</h2>
-                                    <h5 class="italic">{{ $song->artist }}</h5>
-                                </div>
+{{--                        @if(!$songs)--}}
+                            @foreach($songs as $song)
+                                <div id="songsParent" class="transition ease-in-out duration-300 hover:bg-gray-200 text-2xl grid grid-rows-1 grid-cols-12 p-6 bg-white border-b border-gray-200">
+                                    <div class="row-start-1 col-start-1 col-end-4 border-r-2 border-gray-200">
+                                        <h2 class="font-extrabold">{{ $song->name }}</h2>
+                                        <h5 class="italic">{{ $song->artist }}</h5>
+                                    </div>
 
-                                <div class="grid relative flex items-center justify-center row-start-1 col-start-4 col-end-6">
-                                    <small class="text-xs absolute top-1 left-2">Genre</small>
-                                    <p class="italic underline">
-                                        {{ $song->genre->name }}
-                                    </p>
-                                </div>
+                                    <div class="grid relative flex items-center justify-center row-start-1 col-start-4 col-end-6">
+                                        <small class="text-xs absolute top-1 left-2">Genre</small>
+                                        <p class="italic underline">
+                                            {{ $song->genre->name }}
+                                        </p>
+                                    </div>
 
-                                <div class="flex items-center justify-center row-start-1 col-start-7 col-end-9">
-                                    <p class="icons">
-                                        <i class="far fa-play-circle"></i> {{ date("i:s", strtotime($song->duration)) }}
-                                    </p>
-                                </div>
+                                    <div class="flex items-center justify-center row-start-1 col-start-7 col-end-9">
+                                        <p class="icons">
+                                            <i class="far fa-play-circle"></i> {{ date("i:s", strtotime($song->duration)) }}
+                                        </p>
+                                    </div>
 
-                                <div class="flex items-center justify-center row-start-1 col-start-11 col-end-13">
-                                    <p>
-                                        <a href="#"><i class="far fa-trash-alt cWidth"></i></a>
-                                    </p>
+                                    <div class="flex items-center justify-center row-start-1 col-start-11 col-end-13">
+                                        <p>
+                                            <a href="{{ route('session.delete', $song->id) }}"><i class="far fa-trash-alt cWidth"></i></a>
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                        @endforeach
-                        <h1 class="mt-3 font-bold text-lg pb-2">Favourite Genre</h1>
+                            @endforeach
+
+{{--                        @else--}}
+{{--                            You don't have any songs in your playlist yet.--}}
+{{--                        @endif--}}
+                        <h1 class="mt-5 font-bold text-lg pb-2">Favourite Genre</h1>
+                        <h5>You don't have a favourite genre yet.</h5>
                 </div>
             </div>
         </div>

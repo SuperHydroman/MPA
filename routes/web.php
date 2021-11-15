@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\GenreController;
 use App\Http\Controllers\PlaylistController;
+use App\Http\Controllers\PlaylistSessionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SongController;
 use Illuminate\Support\Facades\Route;
@@ -25,12 +27,36 @@ Route::get('/home', function () {
     return view('home');
 })->middleware(['auth'])->name('home');
 
-Route::get('/profile', [ProfileController::class, 'show'])->middleware(['auth'])->name('profile.index');
-/* Song Routing */
-Route::get('/songs', [SongController::class, 'show'])->middleware(['auth'])->name('songs.index');
-Route::get('/songs/add/{id}', [SongController::class, 'add'])->middleware('auth')->name('songs.add');
+// Assigns the middleware role to the desgnated Routes
+Route::group(['middleware' => ['auth']], function () {
+    /* Profile Routing */
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.index');
 
-/* Playlist Routing */
-Route::get('/playlists', [PlaylistController::class, 'show'])->middleware(['auth'])->name('playlists.index');
+    /* Song Routing */
+    Route::get('/songs', [SongController::class, 'show'])->name('songs.index');
+    Route::get('/songs/add', [SongController::class, 'add'])->name('songs.add');
+    Route::post('/songs/add', [SongController::class, 'store'])->name('songs.store');
+    Route::get('/songs/edit/{id}', [SongController::class, 'edit'])->name('songs.edit');
+    Route::post('/songs/edit/{id}', [SongController::class, 'update'])->name('songs.update');
+    Route::get('/songs/delete/{id}', [SongController::class, 'delete'])->name('songs.delete');
+    Route::post('/songs/delete/{id}', [SongController::class, 'remove'])->name('songs.remove');
+
+    /* Genres Routing */
+    Route::get('/genres', [GenreController::class, 'show'])->name('genres.index');
+    Route::get('/genres/add', [GenreController::class, 'add'])->name('genres.add');
+    Route::post('/genres/add', [GenreController::class, 'store'])->name('genres.store');
+    Route::get('/genres/edit/{id}', [GenreController::class, 'edit'])->name('genres.edit');
+    Route::post('/genres/edit/{id}', [GenreController::class, 'update'])->name('genres.update');
+    Route::get('/genres/delete/{id}', [GenreController::class, 'delete'])->name('genres.delete');
+    Route::post('/genres/delete/{id}', [GenreController::class, 'remove'])->name('genres.remove');
+
+    /* Playlist Routing */
+    Route::get('/playlists', [PlaylistController::class, 'show'])->name('playlists.index');
+
+    /* Playlist Session Routing */
+    Route::get('/playlist/add/{id}', [PlaylistSessionController::class, 'add'])->name('session.add');
+    Route::get('/playlist/delete/{id}', [PlaylistSessionController::class, 'delete'])->name('session.delete');
+    Route::get('/playlist/delete/{id}', [PlaylistSessionController::class, 'remove'])->name('session.remove');
+});
 
 require __DIR__ . '/auth.php';

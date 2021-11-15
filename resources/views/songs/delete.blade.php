@@ -1,31 +1,30 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Adding a Genre') }}
+            {{ __('Deleting a Genre') }}
         </h2>
     </x-slot>
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="text-2xl p-6 bg-white border-b border-gray-200">
 
                     <div class="grid relative flex items-center justify-center row-start-1 col-start-1 col-end-2">
-                        <form class="w-full max-w-lg" method="POST" action=" {{ route('songs.store') }} ">
+                        <form class="w-full max-w-lg" method="POST" action=" {{ route('songs.remove', $song->id) }} ">
                             @csrf
                             <div class="flex flex-wrap -mx-3 mb-4">
                                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
                                         Song Name
                                     </label>
-                                    <input class="appearance-none block w-full bg-white-100 text-gray-700 border border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" name="song_name" type="text" placeholder="Example name">
+                                    <input disabled class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" value="{{ $song->name }}" type="text">
                                 </div>
                                 <div class="w-full md:w-1/2 px-3">
                                     <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                         Artist
                                     </label>
-                                    <input class="appearance-none block w-full bg-white-100 text-gray-700 border border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-last-name" name="artist" type="text" placeholder="Artist name">
+                                    <input disabled class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-last-name" value="{{ $song->artist }}" type="text">
                                 </div>
                             </div>
 
@@ -36,14 +35,8 @@
                                         Genre
                                     </label>
                                     <div class="relative">
-                                        <select class="block appearance-none w-full bg-white-100 border border-gray-400 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="genre" id="grid-state">
-                                            @foreach($genres as $genre)
-                                                @if($genre->name == "Frenchcore")
-                                                    <option selected>{{ $genre->name }}</option>
-                                                @else
-                                                    <option>{{ $genre->name }}</option>
-                                                @endif
-                                            @endforeach
+                                        <select disabled class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" name="genre" id="grid-state">
+                                            <option selected>{{ $genre->name }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -53,7 +46,7 @@
                                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                             Minutes
                                         </label>
-                                        <input class="appearance-none block w-full bg-white-100 text-gray-700 border border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-last-name" name="minutes" type="number" min="00" max="59" placeholder="00">
+                                        <input disabled class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-last-name" type="number" min="00" max="59" value="{{ $minutes }}">
                                     </div>
                                 </div>
                                 <div class="w-full md:w-1/5 px-3 mb-4">
@@ -61,7 +54,7 @@
                                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                             Seconds
                                         </label>
-                                        <input class="appearance-none block w-full bg-white-100 text-gray-700 border border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-last-name" name="seconds" type="number" min="00" max="59" placeholder="00">
+                                        <input disabled class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-400 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-last-name"type="number" min="00" max="59" value="{{ $seconds }}">
                                     </div>
                                 </div>
                             </div>
@@ -69,9 +62,15 @@
                             <div class="md:block md:items-center">
                                 <div class="md:w-1/3"></div>
                                 <div class="md:w-3/3">
-                                    <button class="w-full shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
-                                        Add
+                                    <button class="transition ease-in-out duration-300 w-full shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+                                        Delete
                                     </button>
+                                </div>
+                                <div class="md:w-1/3 my-3"></div>
+                                <div class="md:w-3/3">
+                                    <a href="{{ route('songs.index') }}" class="cursor-pointer text-center transition ease-in-out duration-300 w-full shadow bg-gray-500 hover:bg-gray-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+                                        Cancel
+                                    </a>
                                 </div>
                             </div>
 

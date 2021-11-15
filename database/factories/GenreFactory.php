@@ -22,7 +22,7 @@ class GenreFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->realTextBetween(1, 10),
         ];
     }
 }

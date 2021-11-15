@@ -5,7 +5,6 @@ namespace Database\Factories;
 use App\Models\Genre;
 use App\Models\Song;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 class SongFactory extends Factory
 {

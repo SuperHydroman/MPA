@@ -3,10 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Session;
+use function PHPUnit\Framework\arrayHasKey;
 
-class PlaylistSession extends Model
+class PlaylistSession
 {
     use HasFactory;
     private $songs = array();
@@ -21,9 +21,26 @@ class PlaylistSession extends Model
         Session::save();
     }
 
+    public function getSongsFromSession() {
+        $songs = array();
+        $songIds = Session::get('Playlist');
+
+        foreach ($songIds as $songId) {
+            array_push($songs, Song::find($songId));
+        }
+
+        return $songs;
+    }
+
     public function addToSession($id) {
         array_push($this->songs, $id);
         Session::put('Playlist', $this->songs);
+        Session::save();
+    }
+    public function deleteFromSession($id) {
+        $session = Session::pull('Playlist');
+        unset($session[array_search($id, $session)]);
+        Session::put('Playlist', $session);
         Session::save();
     }
 }
