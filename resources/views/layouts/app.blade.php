@@ -34,8 +34,5 @@
                 {{ $slot }}
             </main>
         </div>
-        <div class="footer">
-            {{ var_dump(Illuminate\Support\Facades\Session::all()) }}
-        </div>
     </body>
 </html>

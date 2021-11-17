@@ -8,11 +8,15 @@ use Illuminate\Http\Request;
 
 class SongController extends Controller
 {
+    private $filter = 'default';
+
     protected $homepage = 'songs.index';
 
     public function show() {
         return view($this->homepage, [
-            'songs' => Song::all()
+            'songs' => Song::all(),
+            'filter' => $this->filter,
+            'genres' => Genre::all(),
         ]);
     }
 
@@ -67,5 +71,22 @@ class SongController extends Controller
         Song::deleteSong($id);
 
         return redirect()->route($this->homepage);
+    }
+
+    public function filterSongs(Request $request) {
+        if ($request->option != 'default') {
+            $genre_id = Genre::where('name', '=', $request->option)->first()->id;
+            $songs = Song::where('genre_id', '=', $genre_id)->get();
+            $this->filter = $request->option;
+        }
+        else {
+            $songs = Song::all();
+        }
+
+        return view($this->homepage, [
+            'songs' => $songs,
+            'filter' => $this->filter,
+            'genres' => Genre::all(),
+        ]);
     }
 }

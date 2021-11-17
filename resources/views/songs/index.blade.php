@@ -13,22 +13,31 @@
                 </a>
             </div>
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-4">
-                <div class="text-2xl grid grid-rows-1 grid-cols-12 p-6 bg-white border-b border-gray-200">
-                    <div class="row-start-1 col-start-1 col-end-2 text-center">
-                        Filter
-                    </div>
+                <div class="text-2xl grid grid-rows-1 grid-cols-12 p-3 bg-white border-b border-gray-200">
+                    <form class="w-full row-start-1 col-start-1 col-end-13 grid grid-rows-1 grid-cols-12" action="{{ route('songs.filter') }}" method="post">
+                        @csrf
+                        <div class="mt-4 row-start-1 col-start-1 col-end-2 text-center inline-block align-middle">
+                            <button class="transition ease-in-out duration-300 hover:bg-gray-200 text-center text-xl px-4 py-1 rounded-2xl bg-white border border-gray-400" type="submit">Filter</button>
+                        </div>
 
-                    <div>
-                        Name
-                    </div>
-
-                    <div>
-                        Artist
-                    </div>
-
-                    <div>
-                        Genre
-                    </div>
+                        <div class="row-start-1 col-start-11 col-end-13">
+                            <small class="float-right text-sm font-bold">Genre</small>
+                            <select name="option" class="block appearance-none w-full bg-white-100 border border-gray-400 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="genre" id="grid-state">
+                                <option selected value="default">--- Default ---</option>
+                                @foreach($genres as $genre)
+                                    @if($filter != null)
+                                        @if($filter == $genre->name)
+                                            <option selected>{{ $genre->name }}</option>
+                                        @else
+                                            <option>{{ $genre->name }}</option>
+                                        @endif
+                                    @else
+                                        <option>{{ $genre->name }}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
+                    </form>
                 </div>
             </div>
 

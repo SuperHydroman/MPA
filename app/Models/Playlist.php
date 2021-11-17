@@ -10,4 +10,14 @@ class Playlist extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public static function removePlaylist($id) {
+        $data = SongsPlaylist::where('playlist_id', '=', $id)->get();
+        if ($data->count() >= 0) {
+            foreach ($data as $song) {
+                SongsPlaylist::find($song->id)->delete();
+            }
+        }
+        self::find($id)->delete();
+    }
 }

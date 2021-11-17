@@ -30,6 +30,6 @@ class PlaylistSessionController extends Controller
     public function store(Request $request) {
         PlaylistSession::savePlaylist($request->playlist_name);
 
-        return redirect()->route($this->homepage);
+        return redirect()->route('playlists.index');
     }
 }

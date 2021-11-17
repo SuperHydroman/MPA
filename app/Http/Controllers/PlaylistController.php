@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Playlist;
-use App\Models\PlaylistSession;
 use App\Models\Song;
 use App\Models\SongsPlaylist;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class PlaylistController extends Controller
 {
@@ -16,16 +17,33 @@ class PlaylistController extends Controller
     }
 
     public function delete($id) {
-        return view('playlists.delete');
+        return view('playlists.delete', [
+            'playlist' => Playlist::find($id),
+        ]);
     }
 
     public function remove($id) {
+        Playlist::removePlaylist($id);
+
+        return redirect()->route('playlists.index');
+    }
+
+    public function delete_song($id) {
+        return view('playlists.deleteS', [
+            'song' => SongsPlaylist::find($id),
+        ]);
+    }
+
+    public function remove_song($id) {
+        SongsPlaylist::removeSongFromPlaylist($id);
+
         return redirect()->route('playlists.index');
     }
 
     public function details($id) {
-        $songIds = SongsPlaylist::all()->where('playlist_id', '=', $id);
+        $songIds = SongsPlaylist::where('playlist_id', '=', $id)->get();
         $songs = array();
+
         $duration = null;
 
         foreach ($songIds as $songId) {
@@ -37,8 +55,7 @@ class PlaylistController extends Controller
         }
 
         return view('playlists.info', [
-            'playlist' => Playlist::find($id),
-            'songs' => $songs,
+            'playlist' => $songIds,
             'duration' => date("H:i:s", $duration)
         ]);
     }

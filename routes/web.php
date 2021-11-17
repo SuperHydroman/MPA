@@ -40,6 +40,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/songs/edit/{id}', [SongController::class, 'update'])->name('songs.update');
     Route::get('/songs/delete/{id}', [SongController::class, 'delete'])->name('songs.delete');
     Route::post('/songs/delete/{id}', [SongController::class, 'remove'])->name('songs.remove');
+    Route::post('/songs', [SongController::class, 'filterSongs'])->name('songs.filter');
 
     /* Genres Routing */
     Route::get('/genres', [GenreController::class, 'show'])->name('genres.index');
@@ -53,7 +54,9 @@ Route::group(['middleware' => ['auth']], function () {
     /* Playlist Routing */
     Route::get('/playlists', [PlaylistController::class, 'show'])->name('playlists.index');
     Route::get('/playlists/delete/{id}', [PlaylistController::class, 'delete'])->name('playlists.delete');
-    Route::post('/platlists/delete/{id}', [PlaylistController::class, 'remove'])->name('playlists.remove');
+    Route::post('/playlists/delete/{id}', [PlaylistController::class, 'remove'])->name('playlists.remove');
+    Route::get('/playlists/delete-song/{id}', [PlaylistController::class, 'delete_song'])->name('playlists.deleteS');
+    Route::post('/playlists/delete-song/{id}', [PlaylistController::class, 'remove_song'])->name('playlists.removeS');
     Route::get('/playlists/info/{id}', [PlaylistController::class, 'details'])->name('playlists.info');
 
     /* Playlist Session Routing */
