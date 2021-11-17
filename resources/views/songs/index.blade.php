@@ -36,7 +36,7 @@
                 @foreach($songs as $song)
                     <div id="songsParent" class="transition ease-in-out duration-300 hover:bg-gray-200 text-2xl grid grid-rows-1 grid-cols-12 p-6 bg-white border-b border-gray-200">
                         <div id="test" class="row-start-1 col-start-1 col-end-4 border-r-2 border-gray-200">
-                            <h2 class="font-extrabold">{{ $song->name }}</h2>
+                            <h2 class="font-bold">{{ $song->name }}</h2>
                             <h5 class="italic">{{ $song->artist }}</h5>
                         </div>
 

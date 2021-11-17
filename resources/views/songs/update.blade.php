@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Adding a Genre') }}
+            {{ __('Editing a Song') }}
         </h2>
     </x-slot>
 
@@ -157,7 +157,7 @@
                                     <button
                                         class="w-full shadow bg-blue-500 hover:bg-blue-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
                                         type="submit">
-                                        Add
+                                        Update
                                     </button>
                                 </div>
                             </div>

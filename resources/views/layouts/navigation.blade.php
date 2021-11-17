@@ -15,13 +15,13 @@
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         {{ __('Home') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('songs.index')" :active="request()->routeIs('songs')">
+                    <x-nav-link :href="route('songs.index')" :active="request()->routeIs('songs.index')">
                         {{ __('Songs') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('genres.index')" :active="request()->routeIs('genres')">
+                    <x-nav-link :href="route('genres.index')" :active="request()->routeIs('genres.index')">
                         {{ __('Genres') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('playlists.index')" :active="request()->routeIs('playlists')">
+                    <x-nav-link :href="route('playlists.index')" :active="request()->routeIs('playlists.index')">
                         {{ __('Playlists') }}
                     </x-nav-link>
                 </div>

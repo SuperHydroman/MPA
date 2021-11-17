@@ -35,7 +35,7 @@
             </main>
         </div>
         <div class="footer">
-            {{ dd(Illuminate\Support\Facades\Session::all()) }}
+            {{ var_dump(Illuminate\Support\Facades\Session::all()) }}
         </div>
     </body>
 </html>

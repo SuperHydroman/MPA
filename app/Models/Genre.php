@@ -17,12 +17,9 @@ class Genre extends Model
     }
 
     public static function storeGenre($name) {
-        $currentTime = Carbon::now('CET')->toDateTimeString();
 
         self::insert([
-            'name' => $name,
-            'created_at' => $currentTime,
-            'updated_at' => $currentTime
+            'name' => $name
         ]);
     }
 

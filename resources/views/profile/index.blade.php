@@ -11,8 +11,16 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <h1 class="font-bold text-2xl pb-2">Profile of {{ Auth::user()->name }}</h1>
                     <div class="divider mb-3 pb-3 border-gray-300 border-solid border-t"></div>
-                        <h1 class="font-bold text-lg pb-1">Playlist</h1>
-{{--                        @if(!$songs)--}}
+
+                    <div class="mb-3 w-full flex grid grid-rows-1 grid-cols-12">
+                        <h1 class="font-bold text-lg pb-1 md:w-1/2 row-start-1 col-start-1 col-end-3">Playlist</h1>
+                        @if($songs != null)
+                            <a href="{{ route('session.save') }}" class="transition ease-in-out duration-300 hover:bg-gray-200 text-center text-xl px-3 row-start-1 col-start-11 col-end-13 rounded-2xl bg-white border border-gray-400">
+                                + Save playlist
+                            </a>
+                        @endif
+                    </div>
+                        @if($songs != null)
                             @foreach($songs as $song)
                                 <div id="songsParent" class="transition ease-in-out duration-300 hover:bg-gray-200 text-2xl grid grid-rows-1 grid-cols-12 p-6 bg-white border-b border-gray-200">
                                     <div class="row-start-1 col-start-1 col-end-4 border-r-2 border-gray-200">
@@ -40,10 +48,9 @@
                                     </div>
                                 </div>
                             @endforeach
-
-{{--                        @else--}}
-{{--                            You don't have any songs in your playlist yet.--}}
-{{--                        @endif--}}
+                        @else
+                            You don't have any songs in your playlist yet.
+                        @endif
                         <h1 class="mt-5 font-bold text-lg pb-2">Favourite Genre</h1>
                         <h5>You don't have a favourite genre yet.</h5>
                 </div>

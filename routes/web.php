@@ -27,7 +27,7 @@ Route::get('/home', function () {
     return view('home');
 })->middleware(['auth'])->name('home');
 
-// Assigns the middleware role to the desgnated Routes
+/* >=>=>=>=>= Assigns the 'auth' middleware to the designated Routes! <=<=<=<=<=*/
 Route::group(['middleware' => ['auth']], function () {
     /* Profile Routing */
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.index');
@@ -52,11 +52,16 @@ Route::group(['middleware' => ['auth']], function () {
 
     /* Playlist Routing */
     Route::get('/playlists', [PlaylistController::class, 'show'])->name('playlists.index');
+    Route::get('/playlists/delete/{id}', [PlaylistController::class, 'delete'])->name('playlists.delete');
+    Route::post('/platlists/delete/{id}', [PlaylistController::class, 'remove'])->name('playlists.remove');
+    Route::get('/playlists/info/{id}', [PlaylistController::class, 'details'])->name('playlists.info');
 
     /* Playlist Session Routing */
     Route::get('/playlist/add/{id}', [PlaylistSessionController::class, 'add'])->name('session.add');
     Route::get('/playlist/delete/{id}', [PlaylistSessionController::class, 'delete'])->name('session.delete');
-    Route::get('/playlist/delete/{id}', [PlaylistSessionController::class, 'remove'])->name('session.remove');
+    Route::post('/playlist/delete/{id}', [PlaylistSessionController::class, 'remove'])->name('session.remove');
+    Route::get('/playlist/save', [PlaylistSessionController::class, 'save'])->middleware(['cs'])->name('session.save');
+    Route::post('/playlist/save', [PlaylistSessionController::class, 'store'])->name('session.store');
 });
 
 require __DIR__ . '/auth.php';

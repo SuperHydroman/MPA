@@ -19,17 +19,14 @@ class Song extends Model
     }
 
     public static function storeSong($request) {
-        $currentTime = Carbon::now('CET')->toDateTimeString();
         $genreId = Genre::where('name', '=', $request->genre)->first()->id;
         $duration = "00:" . $request->minutes . ":" . $request->seconds;
 
-        self::insert([
+        self::create([
             'name' => $request->song_name,
             'artist' => $request->artist,
             'genre_id' => $genreId,
-            'duration' => $duration,
-            'created_at' => $currentTime,
-            'updated_at' => $currentTime
+            'duration' => $duration
         ]);
     }
 
